@@ -1,0 +1,81 @@
+<!--
+    This is an HTML template for testing a python visualization widget.
+    This simulates how the 
+-->
+<html>
+    <head>
+        <script src="https://cdn.plot.ly/plotly-2.12.1.min.js"></script>
+    </head>
+    <body>
+        <h1 style="text-align:center">Widget Demo</h1>
+        <div style='border-style:solid;border-width:2' id="widget_id"></div>
+        <script>
+            var api_result = getApiResult();
+            var windowWidth = window.innerWidth;
+            var windowHeight = window.innerHeight;
+
+            /* Draw the plotly widget. */
+            function drawPlot() {
+                var widgetWidth = windowWidth-40;
+                var widgetHeight = windowHeight - 85;
+                let adjustedHeight = widgetHeight;
+                let adjustedWidth = widgetWidth - 25;
+                if (api_result.aspectRatio) {
+                    let adjustedAspectRatio = api_result.aspectRatio;
+                    if (adjustedAspectRatio > 2) adjustedAspectRatio = 2;
+                    if (adjustedAspectRatio < 0.5) adjustedAspectRatio = 0.5;
+                    adjustedHeight = widgetWidth * adjustedAspectRatio;
+                    if (adjustedHeight > widgetHeight) {
+                        adjustedWidth = widgetHeight /adjustedAspectRatio;
+                        adjustedHeight = widgetHeight;
+                    }
+                }
+                if (api_result.subplots) {
+                    var html = "";
+                    var i;
+                    for (i in api_result.subplots) {
+                        html = html + `<div id='widget_id_${i}'></div>'`;
+                    }
+                    document.getElementById("widget_id").innerHTML = html;
+                    for (i in api_result.subplots) {
+                        var subplot = api_result.subplots[i];
+                        var layout = subplot.layout;
+                        var traces = subplot.traces;
+                        layout.width = adjustedWidth;
+                        layout.height = adjustedHeight/api_result.subplots.length - 15;
+                        Plotly.newPlot(`widget_id_${i}`, traces, layout);
+                    }
+                } else {
+                    var layout = api_result.layout;
+                    var traces = api_result.traces;
+                    layout.width = adjustedWidth;
+                    layout.height = adjustedHeight;
+                    Plotly.newPlot("widget_id", traces, layout);
+                }
+            }
+
+            /* Respond to browser window resize event. */
+            function handleWindowResize() {
+                if (window.innerWidth != windowWidth) {
+                    windowWidth = window.innerWidth;
+                }
+                if (window.innerHeight != windowHeight) {
+                    windowHeight = window.innerHeight;
+                }
+                drawPlot();
+            }
+
+
+            window.addEventListener('resize', handleWindowResize);
+            drawPlot();
+
+            /* Get the results from the API. */
+            function getApiResult() {
+                var api_result =
+                ${API_RESULT}
+                ;
+                return api_result;
+            }
+        </script>
+    </body>
+</html>

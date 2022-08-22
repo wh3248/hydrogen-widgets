@@ -1,0 +1,52 @@
+{
+  "created_date": "Mon Jul 18 2022 14:40:47 GMT-0400 (EDT)",
+  "name": "a1",
+  "description": "Lower Clear Creek",
+  "state": "generated_scenarios",
+  "public": false,
+  "shape_regions": [
+    {
+      "huc_id": "1019000404",
+      "huc_name": "Lower Clear Creek",
+      "shape_index": 9344,
+      "shapefile_name": "HUC10_CONUS1_grid.shp",
+      "shape_source": "Conus1"
+    }
+  ],
+  "directory_name": "a1",
+  "domain_directory": "a1",
+  "user_id": "wh3248",
+  "wgs84_bounds": [
+    -105.50108418838829,
+    39.66528530132401,
+    -104.95152560371173,
+    39.86676072775783
+  ],
+  "conus1_bounds": [
+    1075,
+    719,
+    1124,
+    739
+  ],
+  "grid_bounds": [
+    1075,
+    719,
+    1124,
+    739
+  ],
+  "conus2_bounds": [
+    1502,
+    1669,
+    1551,
+    1688
+  ],
+  "collected_observations": true,
+  "collected_current_conditions": true,
+  "generate_scenario_starttime": "2022-07-18T19:49:34.000Z",
+  "generate_scenario_endtime": "2022-07-18T19:49:46.000Z",
+  "collected_forecast_model": "collected",
+  "collected_historical_forcings": "collected",
+  "generated_scenarios": [
+    "test_average"
+  ]
+}

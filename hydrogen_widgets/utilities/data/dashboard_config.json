@@ -1,0 +1,122 @@
+{
+    "watershed_conditions": {
+        "title": "Current Conditions",
+        "toolTip": "Current conditions of soil moisture and water depth",
+        "column_widths": [
+            "",
+            "250px"
+        ],
+        "row_heights": [
+            "90%",
+            "100%"
+        ],
+        "widgets": [
+            {
+                "type": "plotly",
+                "title": "Heat Map of Current Conditions",
+                "datasource": "current_conditions_heatmap"
+            },
+            {
+                "type": "plotly",
+                "title": "Site Location",
+                "datasource": "location_map"
+            },
+            {
+                "type": "plotly",
+                "title": "Observation Points",
+                "colspan": 2,
+                "datasource": "observation_points"
+            }
+        ]
+    },
+    "point_observations": {
+        "title": "Current Conditions",
+        "toolTip": "Current conditions of soil moisture and water depth",
+        "column_widths": [
+            "50%",
+            "50%"
+        ],
+        "row_heights": [
+            "100%"
+        ],
+        "widgets": [
+            {
+                "type": "plotly",
+                "title": "Terrain",
+                "datasource": "terrain_map"
+            },
+            {
+                "type": "plotly",
+                "title": "Observations Points",
+                "datasource": "terrain_obs_points",
+                "use_global_state": "terrainSite",
+                "global_state_id": "state.site_id",
+                "query_parameters": {
+                    "site_type": "state.site_type",
+                    "site_id": "state.site_id",
+                    "site_name": "state.site_name"
+                }
+            }
+        ]
+    },
+    "scenarios": {
+        "title": "Weather Scenarios",
+        "column_widths": [
+            "",
+            "250px"
+        ],
+        "row_heights": [
+            "250px",
+            ""
+        ],
+        "widgets": [
+            {
+                "type": "plotly",
+                "datasource": "scenario_timeseries",
+                "title": "Scenario Time Series",
+                "rowspan": 2
+            },
+            {
+                "type": "plotly",
+                "title": "Site Location",
+                "datasource": "location_map"
+            }
+        ]
+    },
+    "forecasts": {
+        "title": "Watershed Forecasts",
+        "column_widths": [
+            "50%",
+            "25%",
+            "25%"
+        ],
+        "row_heights": [
+            "100%",
+            "450px"
+        ],
+        "widgets": [
+            {
+                "type": "plotly",
+                "title": "Forecast Soil Moisture",
+                "datasource": "forecast_soilmoisture_heatmap"
+            },
+            {
+                "type": "plotly",
+                "title": "Forecast Water Depth",
+                "colspan":2,
+                "datasource": "forecast_watertable_heatmap"
+            },
+            {
+                "type": "plotly",
+                "colspan":2,
+                "title": "Forecast Time Series",
+                "datasource": "forecast_time_series"
+            },
+            {
+                "type": "plotly",
+                "title": "Site Location",
+                "datasource": "location_map"
+            }
+        ]
+    }
+}
