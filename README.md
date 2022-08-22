@@ -96,4 +96,8 @@ To add a new widget you must do the following:
    2. Modify the get\_widget\_result.py file to add a call to the new widget.
    3. Edit dashboard\_config.json to add a widget to a dashboard using the data\_source defined in #2.
 
+The widgets in the dashboard are then rendered in javascript in the React application as shown in the example below. Note the dashboard below shows 4 widgets all developed and rendered independently with widget row/column layout specified in the json file.
 
+
+
+<img src="dashboard.png" alt="HydroGEN architecture" style="width:100%"/>
