@@ -90,7 +90,7 @@ Each dashboard contains a title and the column widths and row hights of the layo
 
 The dashboard configuration is retrieved by the javascript UI and when a dashboard needs to be rendered the Web browser calls the API for each widget passing the datasource which is used to execute the python widget code.
 
-The return value from the API is json containing both the data and configure to allow the UI to render the widget with the plotly javascript library.
+The return value from the API is json containing both the data and layout configuration to allow the UI to render the widget with the plotly javascript library.
 
 <img src="figures/widget-sequence.png" alt="HydroGEN architecture" style="width:100%"/>
 
