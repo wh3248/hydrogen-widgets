@@ -77,19 +77,25 @@ in this repo. You can edit the wigets displayed in each dashboard by changing th
 
     hydrogen_widgets/utilities/data/dashboard_config.json
 
-The following dashboards are currently supported:
+The following dashboards are currently supported in dashboard_config.json
 
   * watershed_conditions
   * point_observations
   * scenarios
   * forecasts
 
-Documentation of the supported attributes in the dashboard\_config.json can be found in the documentation function comments in the get\_widget\_layout.py source code in this repo.
+Each dashboard contains a title and the column widths and row hights of the layout of the dashboard. A dashboard also contains a list of widgets and each widget is identified with a datasource to identify the data to be used to render the widget.
 
-The widgets defined in the dashboard\_config.json file contain a data\_source attribute that is passed in an API call from the UI. A function in this repo is used by the API to call the associated widget implementation associated with the data\_source. This function is located in:
+<img src="figures/dashboard-config.png" alt="HydroGEN architecture" style="width:100%"/>
 
-    hydrogen_widgets/utilities/get_widget_result.py
-    
+The dashboard configuration is retrieved by the javascript UI and when a dashboard needs to be rendered the Web browser calls the API for each widget passing the datasource which is used to execute the python widget code.
+
+The return value from the API is json containing both the data and configure to allow the UI to render the widget with the plotly javascript library.
+
+<img src="figures/widget-sequence.png" alt="HydroGEN architecture" style="width:100%"/>
+
+
+   
 To add a new widget you must do the following:
 
    1. Create a new widget implementation .py file.
@@ -100,4 +106,4 @@ The widgets in the dashboard are then rendered in javascript in the React applic
 
 
 
-<img src="dashboard.png" alt="HydroGEN architecture" style="width:100%"/>
+<img src="figures/dashboard.png" alt="HydroGEN architecture" style="width:100%"/>
